@@ -19,18 +19,18 @@
                     <h2>Vous n'êtes pas connecté</h2>
                     <div class="buttons">
                         <button id="log_in">
-                            <a href="login.php">Se connecter</a>
+                            <a href="">Se connecter</a>
                         </button>
                         <button id="sign_in">
-                            <a href="register.php">S'inscrire</a>
+                            <a href="">S'inscrire</a>
                         </button>
                     </div>
                 </div>
             <?php else : ?>
                 <div class="home">
                     <h2>Vous êtes connecté</h2>
-                    <button>
-                        <a href="logout.php">Se déconnecter</a>
+                    <button id="log_out">
+                        <a href="">Se déconnecter</a>
                     </button>
                 </div>
             <?php endif; ?>

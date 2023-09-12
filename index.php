@@ -1,7 +1,10 @@
 <?php
 
+session_start();
+
 use App\Controller\HomeController;
 use App\Controller\AuthController;
+
 
 require_once 'vendor/autoload.php';
 
@@ -24,6 +27,14 @@ $router->map('POST', '/register', function () {
         $_POST['password2']
     );
 }, 'sign_in');
+
+$router->map('POST', '/login', function () {
+    $authController = new AuthController();
+    $authController->login(
+        $_POST['login'],
+        $_POST['password']
+    );
+}, 'login');
 
 // match current request url
 $match = $router->match();

@@ -1,7 +1,7 @@
 const signInBtn = document.getElementById('sign_in');
 const logInBtn = document.getElementById('log_in');
 
-signInBtn.addEventListener('click', (e) => {
+signInBtn?.addEventListener('click', (e) => {
     e.preventDefault();
     const popUpDiv = document.createElement('div');
     popUpDiv.className = 'pop_up';
@@ -23,7 +23,7 @@ signInBtn.addEventListener('click', (e) => {
     })
 })
 
-logInBtn.addEventListener('click', (e) => {
+logInBtn?.addEventListener('click', (e) => {
     e.preventDefault();
     const popUpDiv = document.createElement('div');
     popUpDiv.className = 'pop_up';
@@ -31,6 +31,18 @@ logInBtn.addEventListener('click', (e) => {
     form.prepend(closeBtn(popUpDiv));
     popUpDiv.appendChild(form);
     document.body.appendChild(popUpDiv);
+    form.addEventListener('submit', (ev) => {
+        ev.preventDefault()
+        const data = new FormData(form);
+        fetch('/module-connexion-b2/login', {
+            method: 'POST',
+            body: data
+        }).then(response => {
+            if (response.status === 200) {
+                console.log('ok');
+            }
+        })
+    })
 })
 
 function signInForm() {

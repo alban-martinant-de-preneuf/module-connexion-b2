@@ -11,8 +11,11 @@ class AuthModel {
         $query->bindParam(':login', $login);
         $query->execute();
         $data = $query->fetch();
+        var_dump($data);
         if ($data) {
-            return new User($data['id'], $data['login'], $data['prenom'], $data['nom'], $data['password']);
+            return new User($data['id'], $data['login'], $data['firstname'], $data['lastname'], $data['password']);
+        } else {
+            return null;
         }
     }
 

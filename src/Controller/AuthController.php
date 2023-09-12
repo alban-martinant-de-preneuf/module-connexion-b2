@@ -34,6 +34,33 @@ class AuthController {
         }
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $authModel->register($firstname, $lastname, $login, $password);
+        $authModel->register($login, $firstname, $lastname, $password);
+    }
+
+    public function login(string $login, string $password) {
+        $args = func_get_args();
+        foreach ($args as &$arg) {
+            if (empty($arg)) {
+                header("HTTP/1.1 400 Empty field");
+                die();
+            }
+            $arg = htmlspecialchars($arg);
+        }
+        if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            header("HTTP/1.1 400 Invalid email");
+            die();
+        }
+        $authModel = new AuthModel();
+        $user = $authModel->getUser($login);
+        var_dump($user);
+        if (!$user) {
+            header("HTTP/1.1 400 Email doesn't exist");
+            die();
+        }
+        if (!password_verify($password, $user->getPassword())) {
+            header("HTTP/1.1 400 Invalid password");
+            die();
+        }
+        $_SESSION['user'] = $user;
     }
 }

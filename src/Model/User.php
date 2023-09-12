@@ -19,4 +19,9 @@ class User
         $this->lastname = $lastname;
         $this->password = $password;
     }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
 }
