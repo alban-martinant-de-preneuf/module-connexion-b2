@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module de connexion</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="public/js/script.js" defer></script>
+    <link rel="stylesheet" href="/module-connexion-b2/public/css/reset.css">
+    <link rel="stylesheet" href="/module-connexion-b2/public/css/style.css">
+    <script src="/module-connexion-b2/public/js/script.js" defer></script>
 </head>
 
 <body>
