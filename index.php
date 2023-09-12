@@ -1,41 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module de connexion</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/header.js" defer></script>
-</head>
+use App\Controller\HomeController;
 
-<body>
-    <?php include 'includes/header.php'; ?>
-    <main>
-        <section>
-            <?php if (!isset($_SESSION['user'])) : ?>
-                <div class="home">
-                    <h2>Vous n'êtes pas connecté</h2>
-                    <div class="buttons">
-                        <button>
-                            <a href="login.php">Se connecter</a>
-                        </button>
-                        <button>
-                            <a href="register.php">S'inscrire</a>
-                        </button>
-                    </div>
-                </div>
-            <?php else : ?>
-                <div class="home">
-                    <h2>Vous êtes connecté</h2>
-                    <button>
-                        <a href="logout.php">Se déconnecter</a>
-                    </button>
-                </div>
-            <?php endif; ?>
-        </section>
-    </main>
-</body>
+require_once 'vendor/autoload.php';
 
-</html>
+$router = new AltoRouter();
+
+$router->setBasePath('/module-connexion-b2');
+
+$router->map('GET', '/', function () {
+    $homeController = new HomeController();
+    $homeController->getHome();
+}, 'home');
+
+// match current request url
+$match = $router->match();
+
+// call closure or throw 404 status`
+if (is_array($match) && is_callable($match['target'])) {
+    call_user_func_array($match['target'], $match['params']);
+} else {
+    // no route was matched
+    header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+}
