@@ -4,10 +4,19 @@ namespace App\Model;
 
 class DbConnection
 {
-
+    /**
+     * Database connection
+     *
+     * @var \PDO|null
+     */
     private static ?\PDO $_db = null;
 
-    public static function getDb()
+    /**
+     * Get database connection
+     *
+     * @return \PDO
+     */
+    public static function getDb(): \PDO
     {
         if (!self::$_db) {
             try {

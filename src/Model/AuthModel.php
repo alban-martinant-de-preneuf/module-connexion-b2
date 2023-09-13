@@ -4,8 +4,13 @@ namespace App\Model;
 
 class AuthModel
 {
-
-    public function getUser(string $login)
+    /**
+     * get an instance of User from database
+     *
+     * @param string $login
+     * @return User|null
+     */
+    public function getUser(string $login): ?User
     {
         $db = DbConnection::getDb();
         $sqlQuery = 'SELECT * FROM user WHERE login = :login';
@@ -21,7 +26,16 @@ class AuthModel
         }
     }
 
-    public function register(string $login, string $firstname, string $lastname, string $password)
+    /**
+     * register a new user in database
+     *
+     * @param string $login
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $password
+     * @return void
+     */
+    public function register(string $login, string $firstname, string $lastname, string $password): void
     {
         $db = DbConnection::getDb();
         $sqlQuery = ('INSERT INTO user (login, firstname, lastname, password) 
@@ -39,5 +53,3 @@ class AuthModel
         }
     }
 }
-
-// sdf56ergM!dz

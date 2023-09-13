@@ -4,9 +4,21 @@ namespace App\Controller;
 
 use App\Model\AuthModel;
 
-class AuthController {
+class AuthController
+{
 
-    public function register(string $login, string $firstname, string $lastname, string $password, string $password2) {
+    /**
+     * Register a new user
+     *
+     * @param string $login
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $password
+     * @param string $password2
+     * @return void
+     */
+    public function register(string $login, string $firstname, string $lastname, string $password, string $password2): void
+    {
         $args = func_get_args();
         foreach ($args as &$arg) {
             if (empty($arg)) {
@@ -37,7 +49,15 @@ class AuthController {
         $authModel->register($login, $firstname, $lastname, $password);
     }
 
-    public function login(string $login, string $password) {
+    /**
+     * Login a user
+     *
+     * @param string $login
+     * @param string $password
+     * @return void
+     */
+    public function login(string $login, string $password): void
+    {
         $args = func_get_args();
         foreach ($args as &$arg) {
             if (empty($arg)) {

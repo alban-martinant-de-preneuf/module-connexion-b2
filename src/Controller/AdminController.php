@@ -6,7 +6,9 @@ use App\Model\AdminModel;
 
 class AdminController
 {
-
+    /**
+     * Check if user is admin to instantiate AdminController
+     */
     public function __construct()
     {
         if (isset($_SESSION['user'])) {
@@ -17,7 +19,12 @@ class AdminController
         }
     }
 
-    public function getAllUsers()
+    /**
+     * Get all users from database in JSON format
+     *
+     * @return void
+     */
+    public function getAllUsers(): void
     {
         $adminModel = new AdminModel();
         echo json_encode($adminModel->getAllUsers());
