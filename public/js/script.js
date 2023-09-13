@@ -1,5 +1,6 @@
 const signInBtn = document.getElementById('sign_in');
 const logInBtn = document.getElementById('log_in');
+const logOutBtn = document.getElementById('log_out');
 
 signInBtn?.addEventListener('click', (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ signInBtn?.addEventListener('click', (e) => {
             body: data
         }).then(response => {
             if (response.status === 200) {
-                console.log('ok');
+                window.location.reload();
             }
         })
     })
@@ -39,9 +40,20 @@ logInBtn?.addEventListener('click', (e) => {
             body: data
         }).then(response => {
             if (response.status === 200) {
-                console.log('ok');
+                // window.location.reload();
             }
         })
+    })
+})
+
+logOutBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch('/module-connexion-b2/logout', {
+        method: 'GET'
+    }).then(response => {
+        if (response.status === 200) {
+            window.location.reload();
+        }
     })
 })
 

@@ -23,10 +23,10 @@ class AuthController {
             header("HTTP/1.1 400 Passwords don't match");
             die();
         }
-        if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
-            header("HTTP/1.1 400 Invalid email");
-            die();
-        }
+        // if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
+        //     header("HTTP/1.1 400 Invalid email");
+        //     die();
+        // }
         $authModel = new AuthModel();
         if ($authModel->getUser($login)) {
             header("HTTP/1.1 400 Email already exists");
@@ -46,10 +46,10 @@ class AuthController {
             }
             $arg = htmlspecialchars($arg);
         }
-        if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
-            header("HTTP/1.1 400 Invalid email");
-            die();
-        }
+        // if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
+        //     header("HTTP/1.1 400 Invalid email");
+        //     die();
+        // }
         $authModel = new AuthModel();
         $user = $authModel->getUser($login);
         var_dump($user);
@@ -61,6 +61,6 @@ class AuthController {
             header("HTTP/1.1 400 Invalid password");
             die();
         }
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = serialize($user);
     }
 }

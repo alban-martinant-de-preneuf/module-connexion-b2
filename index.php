@@ -1,10 +1,10 @@
 <?php
 
-session_start();
-
-use App\Controller\HomeController;
+use App\Controller\ViewController;
 use App\Controller\AuthController;
+use App\Controller\AdminController;
 
+session_start();
 
 require_once 'vendor/autoload.php';
 
@@ -13,8 +13,8 @@ $router = new AltoRouter();
 $router->setBasePath('/module-connexion-b2');
 
 $router->map('GET', '/', function () {
-    $homeController = new HomeController();
-    $homeController->getHome();
+    $viewController = new ViewController();
+    $viewController->getHome();
 }, 'home');
 
 $router->map('POST', '/register', function () {
@@ -35,6 +35,20 @@ $router->map('POST', '/login', function () {
         $_POST['password']
     );
 }, 'login');
+
+$router->map('GET', '/admin/users', function () {
+    $adminController = new AdminController();
+    $adminController->getAllUsers();
+}, 'get_all_users');
+
+$router->map('GET', '/admin', function () {
+    $viewController = new ViewController();
+    $viewController->getAdminPage();
+}, 'admin');
+
+$router->map('GET', '/logout', function () {
+    session_destroy();
+}, 'logout');
 
 // match current request url
 $match = $router->match();
