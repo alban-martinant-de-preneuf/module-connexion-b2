@@ -15,14 +15,6 @@
     <?php include 'includes/header.php'; ?>
     <main>
         <section>
-            <?php
-            if (isset($_SESSION['user'])) {
-                $user = unserialize($_SESSION['user']);
-                if ($user->getLogin() !== 'admiN1337$') {
-                    header('location: /module-connexion-b2/');
-                }
-            }
-            ?>
             <h1>Page d'administration</h1>
             <table id="users_table">
                 <thead>

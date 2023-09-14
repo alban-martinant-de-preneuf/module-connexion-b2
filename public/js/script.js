@@ -40,7 +40,7 @@ logInBtn?.addEventListener('click', (e) => {
             body: data
         }).then(response => {
             if (response.status === 200) {
-                // window.location.reload();
+                window.location.reload();
             }
         })
     })

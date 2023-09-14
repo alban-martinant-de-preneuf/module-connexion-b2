@@ -3,6 +3,7 @@
 use App\Controller\ViewController;
 use App\Controller\AuthController;
 use App\Controller\AdminController;
+use App\Controller\UserController;
 
 session_start();
 
@@ -45,6 +46,28 @@ $router->map('GET', '/admin', function () {
     $viewController = new ViewController();
     $viewController->getAdminPage();
 }, 'admin');
+
+$router->map('GET', '/profil', function () {
+    $viewController = new ViewController();
+    $viewController->getProfilPage();
+}, 'profil');
+
+$router->map('POST', '/profil', function () {
+    $userController = new UserController();
+    $userController->updateUser(
+        $_POST['login'],
+        $_POST['firstname'],
+        $_POST['lastname']
+    );
+}, 'profil_update');
+
+$router->map('POST', '/profil/pwd', function () {
+    $userController = new UserController();
+    $userController->updatePwd(
+        $_POST['password'],
+        $_POST['password2']
+    );
+}, 'profil_update_pwd');
 
 $router->map('GET', '/logout', function () {
     session_destroy();

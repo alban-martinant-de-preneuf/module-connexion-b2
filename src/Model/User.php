@@ -126,4 +126,44 @@ class User
         $this->password = $password;
         return $this;
     }
+
+    /**
+     * Update user in database
+     *
+     * @return void
+     */
+    public function updateUser(): void
+    {
+        $db = DbConnection::getDb();
+        $sqlQuery = ('UPDATE user SET login = :login, firstname = :firstname, lastname = :lastname WHERE id = :id');
+        $statement = $db->prepare($sqlQuery);
+        $statement->bindParam(':login', $this->login);
+        $statement->bindParam(':firstname', $this->firstname);
+        $statement->bindParam(':lastname', $this->lastname);
+        $statement->bindParam(':id', $this->id);
+        if ($statement->execute()) {
+            echo 'Votre profil a bien été mis à jour';
+        } else {
+            header("HTTP/1.1 500 Internal Server Error");
+        }
+    }
+
+    /**
+     * Update user password in database
+     *
+     * @return void
+     */
+    public function updateUserPwd(): void
+    {
+        $db = DbConnection::getDb();
+        $sqlQuery = ('UPDATE user SET password = :password WHERE id = :id');
+        $statement = $db->prepare($sqlQuery);
+        $statement->bindParam(':password', $this->password);
+        $statement->bindParam(':id', $this->id);
+        if ($statement->execute()) {
+            echo 'Votre mot de passe a bien été mis à jour';
+        } else {
+            header("HTTP/1.1 500 Internal Server Error");
+        }
+    }
 }
