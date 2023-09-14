@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AdminModel;
+use App\Model\AuthModel;
 
 class AdminController
 {
@@ -28,5 +29,17 @@ class AdminController
     {
         $adminModel = new AdminModel();
         echo json_encode($adminModel->getAllUsers());
+    }
+
+    /**
+     * Delete user from database
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function deleteUser(int $id): void
+    {
+        $adminModel = new AdminModel();
+        $adminModel->deleteUser($id);
     }
 }

@@ -12,6 +12,7 @@ async function createUsersInTable() {
 
     users.forEach(user => {
         const line = document.createElement('tr')
+        line.id = 'tr_user_' + user.id
 
         const idCell = document.createElement('td')
         idCell.className = "id_cell"
@@ -33,8 +34,47 @@ async function createUsersInTable() {
         lastnameCell.textContent = user.lastname
         line.appendChild(lastnameCell)
 
+        const deleteCell = document.createElement('td')
+        deleteCell.className = "delete_cell"
+        const delButton = document.createElement('button')
+        delButton.className = "del_button"
+        delButton.id = "del_" + user.id
+        delButton.innerText = "Supprimer"
+        deleteCell.appendChild(delButton)
+        line.appendChild(deleteCell)
+
         userBodyTable.appendChild(line)
     });
+
+    activeDelButtons()
+}
+
+
+function activeDelButtons() {
+    const delButtons = document.querySelectorAll('.del_button')
+
+    console.log(delButtons)
+
+    delButtons.forEach(delButton => {
+        delButton.addEventListener('click', (e) => {
+            const id = e.target.id.split('_')[1]
+            delUser(id)
+        })
+    })
+}
+
+async function delUser(id) {
+    const response = await fetch('/module-connexion-b2/admin/users/' + id, {
+        method: 'DELETE'
+    })
+    const text = await response.text()
+    if (text === 'OK') {
+        document.getElementById('tr_user_' + id).remove()
+        document.getElementById('message').innerText = "Utilisateur supprimé"
+        setTimeout(() => {
+            document.getElementById('message').innerText = ""
+        }, 2000)
+    }
 }
 
 createUsersInTable()

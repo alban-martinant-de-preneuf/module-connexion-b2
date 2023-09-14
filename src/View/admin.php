@@ -16,6 +16,7 @@
     <main>
         <section>
             <h1>Page d'administration</h1>
+            <p id="message"></p>
             <table id="users_table">
                 <thead>
                     <tr>
@@ -23,6 +24,7 @@
                         <th>login</th>
                         <th>firstname</th>
                         <th>lastname</th>
+                        <th>delete</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

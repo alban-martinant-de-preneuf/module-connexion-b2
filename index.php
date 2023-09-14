@@ -42,6 +42,11 @@ $router->map('GET', '/admin/users', function () {
     $adminController->getAllUsers();
 }, 'get_all_users');
 
+$router->map('DELETE', '/admin/users/[i:id]', function ($id) {
+    $adminController = new AdminController();
+    $adminController->deleteUser($id);
+}, 'delete_user');
+
 $router->map('GET', '/admin', function () {
     $viewController = new ViewController();
     $viewController->getAdminPage();
