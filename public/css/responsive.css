@@ -1,11 +1,22 @@
 
 @media screen and (max-width: 1200px) and (min-width: 700px) {
-    
 }
 
 @media screen and (min-width: 1200px) {
+    .menu__box {
+        display: flex;
+        position: initial;
+        width: initial;
+        height: initial;
+        margin: initial;
+        padding: initial;
+        background-color: initial;
+        box-shadow: initial;
+    }
 
-    
+    .menu__btn, #menu__toggle {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 1500px) {

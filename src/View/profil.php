@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/module-connexion-b2/public/css/reset.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/burger.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/style.css">
+    <link rel="stylesheet" href="/module-connexion-b2/public/css/responsive.css">
+
     <script src="/module-connexion-b2/public/js/script.js" defer></script>
     <script src="/module-connexion-b2/public/js/profil.js" defer></script>
 </head>

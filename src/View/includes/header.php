@@ -16,7 +16,7 @@
                     <li><a class="menu__item" href="/module-connexion-b2/admin">Panel admin</a></li>
                 <?php endif; ?>
 
-                <li><a class="menu__item" href="/module-connexion-b2/logout">Déconnexion</a></li>
+                <li><a class="menu__item log_out" href="">Déconnexion</a></li>
             </ul>
         </div>
 

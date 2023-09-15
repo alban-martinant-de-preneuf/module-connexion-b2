@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/module-connexion-b2/public/css/reset.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/burger.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/style.css">
+    <link rel="stylesheet" href="/module-connexion-b2/public/css/responsive.css">
     <script src="/module-connexion-b2/public/js/script.js" defer></script>
 </head>
 
@@ -30,7 +31,7 @@
             <?php else : ?>
                 <div class="home">
                     <h3>Vous êtes connecté</h3>
-                    <button id="log_out">
+                    <button class="log_out">
                         <a href="">Se déconnecter</a>
                     </button>
                 </div>

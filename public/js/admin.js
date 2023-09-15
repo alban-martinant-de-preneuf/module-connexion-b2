@@ -36,11 +36,7 @@ async function createUsersInTable() {
 
         const deleteCell = document.createElement('td')
         deleteCell.className = "delete_cell"
-        const delButton = document.createElement('button')
-        delButton.className = "del_button"
-        delButton.id = "del_" + user.id
-        delButton.innerText = "Supprimer"
-        deleteCell.appendChild(delButton)
+        deleteCell.innerHTML = '<i class="fa-regular fa-trash-can" id ="del_' + user.id + '"></i>'
         line.appendChild(deleteCell)
 
         userBodyTable.appendChild(line)
@@ -51,11 +47,13 @@ async function createUsersInTable() {
 
 
 function activeDelButtons() {
-    const delButtons = document.querySelectorAll('.del_button')
+    const delButtons = document.querySelectorAll('.delete_cell i')
 
     delButtons.forEach(delButton => {
         delButton.addEventListener('click', (e) => {
+            console.log(e.target)
             const id = e.target.id.split('_')[1]
+            console.log(id)
             delUser(id)
         })
     })

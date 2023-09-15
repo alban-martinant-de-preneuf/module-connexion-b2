@@ -1,15 +1,15 @@
 const signInBtn = document.getElementById('sign_in');
 const logInBtn = document.getElementById('log_in');
-const logOutBtn = document.getElementById('log_out');
+const logOutBtns = document.querySelectorAll('.log_out');
 
-signInBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
+function displaySignInForm() {
     const popUpDiv = document.createElement('div');
     popUpDiv.className = 'pop_up';
     const form = signInForm();
     form.prepend(closeBtn(popUpDiv));
     popUpDiv.appendChild(form);
     document.body.appendChild(popUpDiv);
+    activeVerifyPwd();
     form.addEventListener('submit', (ev) => {
         ev.preventDefault()
         const data = new FormData(form);
@@ -18,20 +18,26 @@ signInBtn?.addEventListener('click', (e) => {
             body: data
         }).then(response => {
             if (response.ok) {
-                window.location.reload();
+                popUpDiv.remove();
+                displayLoginForm();
             }
         })
     })
+}
+
+signInBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    displaySignInForm();
 })
 
-logInBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
+function displayLoginForm() {
     const popUpDiv = document.createElement('div');
     popUpDiv.className = 'pop_up';
     const form = logInForm();
     form.prepend(closeBtn(popUpDiv));
     popUpDiv.appendChild(form);
     document.body.appendChild(popUpDiv);
+    activeVerifyPwd();
     form.addEventListener('submit', (ev) => {
         ev.preventDefault()
         const data = new FormData(form);
@@ -44,16 +50,23 @@ logInBtn?.addEventListener('click', (e) => {
             }
         })
     })
+}
+
+logInBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    displayLoginForm();
 })
 
-logOutBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
-    fetch('/module-connexion-b2/logout', {
-        method: 'GET'
-    }).then(response => {
-        if (response.ok) {
-            window.location.reload();
-        }
+logOutBtns.forEach(logOutBtn => {
+    logOutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        fetch('/module-connexion-b2/logout', {
+            method: 'GET'
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            }
+        })
     })
 })
 
@@ -85,6 +98,30 @@ function signInForm() {
     form.appendChild(btn);
 
     return form;
+}
+
+function activeVerifyPwd() {
+    const pwd = document.getElementById('password');
+    const pwd2 = document.getElementById('password2');
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$/;
+    pwd.addEventListener('input', (e) => {
+        if (regex.test(pwd.value)) {
+            pwd.style.border = '1px solid green';
+            pwd.style.backgroundColor = 'lightgreen';
+        } else {
+            pwd.style.border = '1px solid red';
+            pwd.style.backgroundColor = 'pink';
+        }
+    })
+    pwd2?.addEventListener('input', (e) => {
+        if (pwd.value === pwd2.value) {
+            pwd2.style.border = '1px solid green';
+            pwd2.style.backgroundColor = 'lightgreen';
+        } else {
+            pwd2.style.border = '1px solid red';
+            pwd2.style.backgroundColor = 'pink';
+        }
+    })
 }
 
 function logInForm() {
