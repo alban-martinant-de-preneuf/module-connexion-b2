@@ -51,10 +51,11 @@ function activeDelButtons() {
 
     delButtons.forEach(delButton => {
         delButton.addEventListener('click', (e) => {
-            console.log(e.target)
             const id = e.target.id.split('_')[1]
             console.log(id)
-            delUser(id)
+            if (confirm('Êtes vous sûr de vouloir supprimer cet utilisateur ?')) {
+                delUser(id)
+            }
         })
     })
 }
