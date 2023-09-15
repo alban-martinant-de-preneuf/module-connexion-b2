@@ -53,8 +53,6 @@ async function createUsersInTable() {
 function activeDelButtons() {
     const delButtons = document.querySelectorAll('.del_button')
 
-    console.log(delButtons)
-
     delButtons.forEach(delButton => {
         delButton.addEventListener('click', (e) => {
             const id = e.target.id.split('_')[1]

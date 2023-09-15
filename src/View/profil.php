@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page profil</title>
     <link rel="stylesheet" href="/module-connexion-b2/public/css/reset.css">
+    <link rel="stylesheet" href="/module-connexion-b2/public/css/burger.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/style.css">
     <script src="/module-connexion-b2/public/js/script.js" defer></script>
     <script src="/module-connexion-b2/public/js/profil.js" defer></script>
@@ -22,9 +23,9 @@
                 header('location: /module-connexion-b2/');
             }
             ?>
-            <h1>Page profil</h1>
+            <h2>Page profil</h2>
 
-            <h2>Modifier mes informations</h2>
+            <h3>Modifier mes informations</h3>
             <p id="update_message"></p>
             <table id="users_table">
                 <thead>
@@ -36,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <form action="" method="post" id="change_profil">
+                    <form action="" method="put" id="change_profil">
                         <tr>
                             <td><?= $user->getId() ?></td>
                             <td><input type="text" name="login" id="login" value="<?= $user->getLogin() ?>"></td>
@@ -50,7 +51,7 @@
                 </tbody>
             </table>
 
-            <h2>Modifier mon mot de passe</h2>
+            <h3>Modifier mon mot de passe</h3>
             <p id="update_pwd_message"></p>
             <form action="" method="post" id="change_pwd">
                 <label for="password">Nouveau mot de passe</label>

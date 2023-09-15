@@ -17,7 +17,7 @@ signInBtn?.addEventListener('click', (e) => {
             method: 'POST',
             body: data
         }).then(response => {
-            if (response.status === 200) {
+            if (response.ok) {
                 window.location.reload();
             }
         })
@@ -39,7 +39,7 @@ logInBtn?.addEventListener('click', (e) => {
             method: 'POST',
             body: data
         }).then(response => {
-            if (response.status === 200) {
+            if (response.ok) {
                 window.location.reload();
             }
         })
@@ -51,7 +51,7 @@ logOutBtn?.addEventListener('click', (e) => {
     fetch('/module-connexion-b2/logout', {
         method: 'GET'
     }).then(response => {
-        if (response.status === 200) {
+        if (response.ok) {
             window.location.reload();
         }
     })

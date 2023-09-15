@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module de connexion</title>
     <link rel="stylesheet" href="/module-connexion-b2/public/css/reset.css">
+    <link rel="stylesheet" href="/module-connexion-b2/public/css/burger.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/style.css">
     <script src="/module-connexion-b2/public/js/script.js" defer></script>
 </head>
@@ -16,7 +17,7 @@
         <section>
             <?php if (!isset($_SESSION['user'])) : ?>
                 <div class="home">
-                    <h2>Vous n'êtes pas connecté</h2>
+                    <h3>Vous n'êtes pas connecté</h3>
                     <div class="buttons">
                         <button id="log_in">
                             <a href="">Se connecter</a>
@@ -28,7 +29,7 @@
                 </div>
             <?php else : ?>
                 <div class="home">
-                    <h2>Vous êtes connecté</h2>
+                    <h3>Vous êtes connecté</h3>
                     <button id="log_out">
                         <a href="">Se déconnecter</a>
                     </button>

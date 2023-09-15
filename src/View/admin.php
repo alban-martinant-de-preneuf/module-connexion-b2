@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Admin</title>
     <link rel="stylesheet" href="/module-connexion-b2/public/css/reset.css">
+    <link rel="stylesheet" href="/module-connexion-b2/public/css/burger.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/style.css">
     <script src="/module-connexion-b2/public/js/script.js" defer></script>
     <script src="/module-connexion-b2/public/js/admin.js" defer></script>
@@ -15,7 +16,7 @@
     <?php include 'includes/header.php'; ?>
     <main>
         <section>
-            <h1>Page d'administration</h1>
+            <h2>Page d'administration</h2>
             <p id="message"></p>
             <table id="users_table">
                 <thead>
