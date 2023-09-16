@@ -21,8 +21,12 @@
         </div>
 
     <?php endif; ?>
-    <h1>
-        <a href="/module-connexion-b2">Module de connexion</a>
-    </h1>
-
+    <div id="title">
+        <h1>
+            <a href="/module-connexion-b2">Module de connexion</a>
+        </h1>
+        <a href="https://github.com/alban-martinant-de-preneuf/module-connexion-b2" target="_blank">
+            <i class="fa-brands fa-github logo-github"></i>
+        </a>
+    </div>
 </header>

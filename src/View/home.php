@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/module-connexion-b2/public/css/style.css">
     <link rel="stylesheet" href="/module-connexion-b2/public/css/responsive.css">
     <script src="/module-connexion-b2/public/js/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/247a482759.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
